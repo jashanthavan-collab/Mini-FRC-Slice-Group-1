@@ -11,10 +11,14 @@ NoU_Motor rearRightMotor(4);
 NoU_Motor intakeMotor(5);
 NoU_Motor elevator(6);
 
+float elevatorT = 0;
+float intakeT = 0;
 // Servos.
 NoU_Servo stageI(1);
-NoU_Servo stageII(2);
-NoU_Servo clawServo(3);
+NoU_Servo clawServo(2);
+
+float angleI = 0;
+float clawAngle = 0;
 
 // Drivetrain.
 NoU_Drivetrain drivetrain(&frontLeftMotor, &frontRightMotor, &rearLeftMotor, &rearRightMotor);
@@ -39,8 +43,8 @@ void loop() {
 
   intakeMotor.set(intakeT);
   stageI.write(angleI);
-  stageII.write(angleII);
   clawServo.write(clawAngle);
+  elevator.set(elevatorT);
 }
 
 void chassis() {
@@ -86,7 +90,30 @@ void elevator() {
   } else if(PestoLink.buttonHeld(1)) {
     elevator.set(-1); 
   } else {
-    elevator.set(0); }}
+    elevator.set(0); 
+  
+   }
+  if(PetsoLink.buttonHeld(4)) {
+    servoAngle = L1;
+  }else if(PestoLink.buttonHeld(5)) {
+    servoAngle = L2;
+  }else if(PestoLink.buttonHeld(6)) {
+    servoAngle = L3;
+  }else if(PestoLink.buttonHeld(7)) {
+    servoAngle = L4;
+  }
+  
+}
+
+void intake () {
+  if(PestoLink.buttonHeld(2)) {
+    intakeT = 1;
+  } else if(PestoLink.buttonHeld(3)) {
+    intakeT = -1;
+  } else {
+    intakeT = 0; 
+   }}
+
 
 
   
