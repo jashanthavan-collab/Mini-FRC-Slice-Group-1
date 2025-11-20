@@ -114,6 +114,18 @@ void intake () {
     intakeT = 0; 
    }}
 
+void claw() {
+  if(PestoLink.buttonHeld(8)) {
+    clawAngle = 1
+      } 
+else if(PestoLink.buttonHeld(9)) {
+    clawAngle = -1
+      }
+else {
+clawAngle = 0
+}
+}
+
 
 
   
